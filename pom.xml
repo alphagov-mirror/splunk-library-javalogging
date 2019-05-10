@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.splunk.logging</groupId>
+    <groupId>uk.gov.ida</groupId>
     <artifactId>splunk-library-javalogging</artifactId>
-    <version>1.7.3</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>Splunk Logging for Java</name>
