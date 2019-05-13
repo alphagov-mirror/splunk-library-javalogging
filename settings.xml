@@ -1,0 +1,5 @@
+<server>
+    <id>bintray-alphagov</id>
+    <username>${env.BINTRAY_USER}</username>
+    <password>${env.BINTRAY_API_KEY}</password>
+</server>

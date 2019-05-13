@@ -88,6 +88,33 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.jfrog.buildinfo</groupId>
+                        <artifactId>artifactory-maven-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <inherited>false</inherited>
+                        <executions>
+                            <execution>
+                                <id>artifactory</id>
+                                <goals>
+                                    <goal>publish</goal>
+                                </goals>
+                                <configuration>
+                                    <!--<deployProperties>-->
+                                        <!--<gradle>awesome</gradle>-->
+                                        <!--<review.team>qa</review.team>-->
+                                    <!--</deployProperties>-->
+                                    <publisher>
+                                        <contextUrl>https://artifactory.ida.digital.cabinet-office.gov.uk/artifactory</contextUrl>
+                                        <username>${env.ARTIUSER}</username>
+                                        <password>${env.ARTIPASSWORD}</password>
+                                        <repoKey>libs-release-local</repoKey>
+                                        <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                                    </publisher>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -253,36 +280,44 @@
         </license>
     </licenses>
 
-    <organization>
-        <name>Splunk, Inc.</name>
-        <url>http://dev.splunk.com</url>
-    </organization>
+    <distributionManagement>
+        <repository>
+            <id>bintray-alphagov</id>
+            <name>bintray-alphagov</name>
+            <url>https://api.bintray.com/maven/alphagov/maven-test/splunk-library-javalogging/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
-    <contributors>
-        <contributor>
-            <name>Paul van Assen</name>
-            <email>source@pvanassen.nl</email>
-        </contributor>
-        <contributor>
-            <name>Damien Dallimore</name>
-            <email>ddallimore@splunk.com</email>
-        </contributor>
-        <contributor>
-            <name>Fred Ross</name>
-            <email>fross@splunk.com</email>
-        </contributor>
-        <contributor>
-            <name>Shakeel Mohamed</name>
-            <email>shakeel@splunk.com</email>
-        </contributor>
-    </contributors>
+    <!--<organization>-->
+        <!--<name>Splunk, Inc.</name>-->
+        <!--<url>http://dev.splunk.com</url>-->
+    <!--</organization>-->
 
-    <scm>
-        <connection>scm:git:git@github.com:splunk/splunk-library-javalogging.git</connection>
-        <developerConnection>scm:git:git@github.com:splunk/splunk-library-javalogging.git</developerConnection>
-        <tag>HEAD</tag>
-        <url>https://github.com/splunk/splunk-library-javalogging</url>
-    </scm>
+    <!--<contributors>-->
+        <!--<contributor>-->
+            <!--<name>Paul van Assen</name>-->
+            <!--<email>source@pvanassen.nl</email>-->
+        <!--</contributor>-->
+        <!--<contributor>-->
+            <!--<name>Damien Dallimore</name>-->
+            <!--<email>ddallimore@splunk.com</email>-->
+        <!--</contributor>-->
+        <!--<contributor>-->
+            <!--<name>Fred Ross</name>-->
+            <!--<email>fross@splunk.com</email>-->
+        <!--</contributor>-->
+        <!--<contributor>-->
+            <!--<name>Shakeel Mohamed</name>-->
+            <!--<email>shakeel@splunk.com</email>-->
+        <!--</contributor>-->
+    <!--</contributors>-->
+
+    <!--<scm>-->
+        <!--<connection>scm:git:git@github.com:splunk/splunk-library-javalogging.git</connection>-->
+        <!--<developerConnection>scm:git:git@github.com:splunk/splunk-library-javalogging.git</developerConnection>-->
+        <!--<tag>HEAD</tag>-->
+        <!--<url>https://github.com/splunk/splunk-library-javalogging</url>-->
+    <!--</scm>-->
 
 
 </project>
