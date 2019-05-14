@@ -6,7 +6,7 @@
 
     <groupId>uk.gov.ida</groupId>
     <artifactId>splunk-library-javalogging</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>Splunk Logging for Java</name>
