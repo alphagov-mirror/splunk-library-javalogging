@@ -4,16 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.splunk.logging</groupId>
+    <groupId>uk.gov.ida</groupId>
     <artifactId>splunk-library-javalogging</artifactId>
-    <version>1.7.3</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>Splunk Logging for Java</name>
     <url>http://dev.splunk.com/goto/sdk-slj</url>
 
-    <description>Library for structured, semantic logging of Common Information Model compliant events, meant for use
-        with SLF4J.
+    <description>Verify's fork of Splunk's java logging library
     </description>
 
     <properties>
@@ -71,20 +70,26 @@
                             </excludes>
                         </configuration>
                     </plugin>
-
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <groupId>org.jfrog.buildinfo</groupId>
+                        <artifactId>artifactory-maven-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <inherited>false</inherited>
                         <executions>
                             <execution>
-                                <id>attach-javadocs</id>
-                                <configuration>
-                                    <additionalparam>-Xdoclint:syntax</additionalparam>
-                                    <additionalOptions>-Xdoclint:syntax</additionalOptions>
-                                </configuration>
+                                <id>artifactory</id>
                                 <goals>
-                                    <goal>jar</goal>
+                                    <goal>publish</goal>
                                 </goals>
+                                <configuration>
+                                    <publisher>
+                                        <contextUrl>https://artifactory.ida.digital.cabinet-office.gov.uk/artifactory</contextUrl>
+                                        <username>${env.ARTIUSER}</username>
+                                        <password>${env.ARTIPASSWORD}</password>
+                                        <repoKey>libs-release-local</repoKey>
+                                        <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                                    </publisher>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -253,36 +258,12 @@
         </license>
     </licenses>
 
-    <organization>
-        <name>Splunk, Inc.</name>
-        <url>http://dev.splunk.com</url>
-    </organization>
-
-    <contributors>
-        <contributor>
-            <name>Paul van Assen</name>
-            <email>source@pvanassen.nl</email>
-        </contributor>
-        <contributor>
-            <name>Damien Dallimore</name>
-            <email>ddallimore@splunk.com</email>
-        </contributor>
-        <contributor>
-            <name>Fred Ross</name>
-            <email>fross@splunk.com</email>
-        </contributor>
-        <contributor>
-            <name>Shakeel Mohamed</name>
-            <email>shakeel@splunk.com</email>
-        </contributor>
-    </contributors>
-
-    <scm>
-        <connection>scm:git:git@github.com:splunk/splunk-library-javalogging.git</connection>
-        <developerConnection>scm:git:git@github.com:splunk/splunk-library-javalogging.git</developerConnection>
-        <tag>HEAD</tag>
-        <url>https://github.com/splunk/splunk-library-javalogging</url>
-    </scm>
-
+    <distributionManagement>
+        <repository>
+            <id>bintray-alphagov</id>
+            <name>alphagov-maven-test</name>
+            <url>https://api.bintray.com/maven/alphagov/maven-test/splunk-library-javalogging/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
 </project>
