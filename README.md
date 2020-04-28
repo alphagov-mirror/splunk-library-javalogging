@@ -22,9 +22,8 @@ Splunk logging for Java provides:
 
 ### Packaging and publishing
 
-The library is [built, packaged and published by Concourse](https://deployer.tools.signin.service.gov.uk/teams/main/pipelines/build-libraries/jobs/build-splunk-library-javalogging). It's published to both of alphagov's 
-bintray and artifactory. When making changes you need to manually bump the version in the pom.xml. Creds for bintray and 
-artifactory are pulled from the Concourse environement.
+The library is [built, packaged and published by Concourse](https://deployer.tools.signin.service.gov.uk/teams/main/pipelines/build-libraries/jobs/build-splunk-library-javalogging). It's published to alphagov's bintray. When making changes you need to manually bump the version in the pom.xml. Creds for bintray
+are pulled from the Concourse environement.
 
 ### Requirements
 
